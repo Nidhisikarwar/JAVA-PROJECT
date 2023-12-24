@@ -1,1 +1,3 @@
-## Java Project
+Java Project : Library Management System
+
+Updated : Added new source files and resources
