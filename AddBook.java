@@ -3,7 +3,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.util.*;
 import java.awt.event.*;
-public class AddBook extends JFrame/* implements ActionListener*/{
+public class AddBook extends JFrame implements ActionListener{
     Random id=new Random();
     int number=id.nextInt(999999);
 
@@ -88,28 +88,24 @@ public class AddBook extends JFrame/* implements ActionListener*/{
         add=new JButton("Add Book Details");
         add.setBounds(200,520,170,50);
         add.setFont(new Font("serif",Font.PLAIN,16));
-      //  add.addActionListener(this);
+        add.addActionListener(this);
         add.setBackground(Color.BLACK);
         add.setForeground(Color.WHITE);
         add(add);
         
-
         back=new JButton("Back");
         back.setBounds(420,520,170,50);
         back.setFont(new Font("serif",Font.PLAIN,16));
-       // back.addActionListener(this);
+        back.addActionListener(this);
         back.setBackground(Color.BLACK);
         back.setForeground(Color.WHITE);
-
 
         setSize(800,650);
         setLocation(300,50);
         setVisible(true);
         add(back);
-        
     }
-
-   /*  public void actionPerformed(ActionEvent ae){
+    public void actionPerformed(ActionEvent ae){
         if (ae.getSource() == add){
             String name=tfname.getText();
             String author=tfauthor.getText();     
@@ -117,26 +113,22 @@ public class AddBook extends JFrame/* implements ActionListener*/{
             String publishername=tfpublisher.getText(); 
             String price=tfprice.getText();  
             String edition=tfedition.getText();   
-
+            String bookId = labelid.getText();
             try{
                 Conn conn=new Conn();
-                String query= "insert into book details('"+name+"','"+author+"','"+npages+"','"+publishername+"','"+price+"','"+edition+"')";
+                String query= "insert into book details('"+bookName+"','"+authName+"','"+pages+"','"+publisher+"','"+price+"','"+edition+"','"+bookId+"')";
                 conn.s.executeUpdate(query);
                 JOptionPane.showMessageDialog(null, "Book Details Added Successfully");
                 setVisible(false);
                 new Dashboard();
-            }
-            catch(Exception e){
+            } catch(Exception e){
             e.printStackTrace();
             }
         }
-            else{
-
+        else{
          setVisible(false);
-        
+        }
     }
-}
-/* */
     public static void main(String args[]){
         new AddBook();
     }
