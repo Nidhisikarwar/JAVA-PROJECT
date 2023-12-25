@@ -14,6 +14,7 @@ public class Splash extends JFrame{
         JFrame f = new JFrame("Library Management System");
         f.setSize(1200, 600);
         f.setLocation(100, 50);
+
         ImageIcon img = new ImageIcon(ClassLoader.getSystemResource("./images/bookShelves.jpg"));
         Image img2 = img.getImage().getScaledInstance(1199, 599, Image.SCALE_DEFAULT);
         ImageIcon img3 = new ImageIcon(img2);
@@ -36,6 +37,7 @@ public class Splash extends JFrame{
             try{
                 Thread.sleep(5000);
                 f.setVisible(false);
+                new Dashboard();
             }catch(InterruptedException e){}
     }
 }

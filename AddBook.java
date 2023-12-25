@@ -21,6 +21,7 @@ public class AddBook extends JFrame implements ActionListener{
         getContentPane().setBackground(Color.WHITE);//background is white
         setLayout(null);
         setResizable(false);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JLabel heading=new JLabel("<html><p style='border-bottom: 3px solid rgb(0, 0, 0);'> Add New Book </p></html>");
         heading.setBounds(280,35,500,50);
@@ -129,12 +130,12 @@ public class AddBook extends JFrame implements ActionListener{
             String bookId = labelid.getText();
 
             try{
-                Conn c=new Conn();
-                String query= "insert into bookdetails('"+bookName+"','"+authName+"','"+pages+"','"+publisher+"','"+price+"','"+edition+"','"+bookId+"')";
+                Conn c = new Conn();
+                String query = "insert into bookdetails('"+bookName+"','"+authName+"','"+pages+"','"+publisher+"','"+price+"','"+edition+"','"+bookId+"')";
                 c.s.executeUpdate(query);
                 JOptionPane.showMessageDialog(null, "Book Details Added Successfully");
                 setVisible(false);
-                new Dashboard();
+                new ViewBooks();
             } catch(Exception e){
             e.printStackTrace();
             }
