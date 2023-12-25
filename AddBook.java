@@ -116,7 +116,7 @@ public class AddBook extends JFrame implements ActionListener{
             String bookId = labelid.getText();
             try{
                 Conn conn=new Conn();
-                String query= "insert into book details('"+bookName+"','"+authName+"','"+pages+"','"+publisher+"','"+price+"','"+edition+"','"+bookId+"')";
+                String query= "insert into bookdetails('"+bookName+"','"+authName+"','"+pages+"','"+publisher+"','"+price+"','"+edition+"','"+bookId+"')";
                 conn.s.executeUpdate(query);
                 JOptionPane.showMessageDialog(null, "Book Details Added Successfully");
                 setVisible(false);
