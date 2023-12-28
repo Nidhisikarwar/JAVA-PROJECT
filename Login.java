@@ -1,17 +1,12 @@
 package class_files;
-
 import javax.swing.*;
-
-
-
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
 
-
-public class Login extends JFrame /*implements ActionListener*/{
+public class Login extends JFrame implements ActionListener{
     JTextField tfusername,tfpassword;
-    //JCheckBox cbnew;
+    JCheckBox cbnew;
     Login(){
 
         getContentPane().setBackground(Color.WHITE);
@@ -22,86 +17,89 @@ public class Login extends JFrame /*implements ActionListener*/{
         Heading.setFont(new Font("Arial",Font.BOLD,34));
         add(Heading);
 
+        Font lblFont = new Font("Arial",Font.BOLD,20);
+        Font tfFont = new Font("Arial",Font.BOLD,18);
         JLabel lblusername=new JLabel("Username:");
         lblusername.setBounds(80,180,150,50);
-        lblusername.setFont(new Font("Arial",Font.BOLD,20));
+        lblusername.setFont(lblFont);
         add(lblusername);
 
-        JTextField tfusername =new JTextField();
+        tfusername =new JTextField();
         tfusername.setBounds(200,190,150,30);
+        tfusername.setFont(tfFont);
         add(tfusername);
 
         JLabel lblpassword=new JLabel("Password:");
         lblpassword.setBounds(80,240,150,50);
-        lblpassword.setFont(new Font("Arial",Font.BOLD,20));
+        lblpassword.setFont(lblFont);
         add(lblpassword);
 
-        JPasswordField tfpassword =new JPasswordField();
+        tfpassword =new JPasswordField();
         tfpassword .setBounds(200,250,150,30);
+        tfpassword.setFont(tfFont);
+        ((JPasswordField) tfpassword).setEchoChar('*');
         add(tfpassword);
 
-        /*JCheckBox cbnew=new JCheckBox("Show Password");
+        cbnew=new JCheckBox("Show Password");
         cbnew.addActionListener(this); 
-         cbnew.setBounds(200,280,150,30);*/
+        cbnew.setBounds(80,305,125,35);
+	cbnew.setFont(new Font("Arial",Font.BOLD,13));
+	cbnew.setBackground(Color.WHITE);
+	cbnew.setSelected(false);
+	add(cbnew);
     
         JButton jblogin=new JButton("LOGIN");
-        jblogin.setBounds(175,360,150,40);
+        jblogin.setBounds(175,380,150,40);
         jblogin.setBackground(Color.BLACK);
         jblogin.setForeground(Color.WHITE);
         jblogin.setFont(new Font("Arial",Font.BOLD,18));
         jblogin.setFocusPainted(false);
-        //jblogin.addActionListener(this);
+        jblogin.addActionListener(this);
         add(jblogin);
 
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("./images/login.png"));
-        Image i2 = i1.getImage().getScaledInstance(500,450, Image.SCALE_DEFAULT);
+        Image i2 = i1.getImage().getScaledInstance(500,450, Image.SCALE_REPLICATE);
         ImageIcon i3 = new ImageIcon(i2);
         JLabel img = new JLabel(new ImageIcon(i2));
-        img.setBounds(310,0,700,600);
+        img.setBounds(350,0,700,600);
         add(img); 
 
-        setSize(1000,600);
-        setLocation(380,180);
+        setSize(1050,600);
+        setLocation(300,100);
         setVisible(true);
 
 
 
     }
-   /*public void actionPerformed(ActionEvent ae){
-       // setVisible(false);
-        //new Dashboard();
+   public void actionPerformed(ActionEvent ae){
         try{
             String username=tfusername.getText();
             String password=tfpassword.getText();
-
-
             Conn c=new Conn();
             String query ="select * from login where username= '"+ username+"' and password ='"+ password+"'";
-
             ResultSet rs= c.s.executeQuery(query);
-            if(rs.next()){
-                  setVisible(false);
-                  Dashboard();
+	    if(ae.getSource() == cbnew){
+		if(cbnew.isSelected()){
+                    ((JPasswordField) tfpassword).setEchoChar((char)0);
+		}
+		else{
+                    ((JPasswordField) tfpassword).setEchoChar('*');
+		}
+	    }
+	    else{
+		if(rs.next()){
+			setVisible(false);
+			new Dashboard();
+		}
+		else{
+			JOptionPane.showMessageDialog(null, "Invalid Username and Password");
             }
-            else{
-                JOptionPane.showMessageDialog(null, "Invalid Username and Password");
-                setVisible(false);
-            }
+	    }
         }
         catch(Exception e){
             e.printStackTrace();
         }
-    }*/
-    /*public void actionPerformed(ActionEvent ae){
-                if(cbnew.isSelected())
-                {
-                    ((JPasswordField) tfpassword).setEchoChar((char)0);
-                }
-                else{
-                    ((JPasswordField) tfpassword).setEchoChar('*');
-                }
-       
-    }*/
+    }
     public static void main(String args[]){
         new Login();
     }
