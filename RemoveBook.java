@@ -1,5 +1,6 @@
 package class_files;
 
+//import class_files.Conn;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -33,6 +34,18 @@ public class RemoveBook extends JFrame implements ActionListener{
         cbookname.setBounds(260,100,140,30); 
         cbookname.setFont(new Font("Arial",Font.PLAIN,16));
         add(cbookname);  
+        
+        try{
+                        Conn c=new Conn();
+                        String query ="select * from bookdetails where bookName = '"+cbookname.getSelectedItem()+"'"; 
+                        ResultSet rs= c.s.executeQuery(query);
+                        while(rs.next()){
+                        cbookname.add(rs.getString("bookName"));
+                        }
+                } catch(Exception e) {
+                        e.printStackTrace();
+
+                }
         
         Font fontl = new Font("Arial",Font.PLAIN,17);
         
@@ -101,40 +114,12 @@ public class RemoveBook extends JFrame implements ActionListener{
         lbledition=new JLabel();
         lbledition.setBounds(200,400,150,30);
         add(lbledition);
-        
-        delete=new JButton("Delete");
-        delete.setBounds(50,450,130,30);
-        delete.setFont(new Font("Arial",Font.PLAIN,16));
-        delete.setBackground(Color.BLACK);
-        delete.setForeground(Color.WHITE);
-        delete.addActionListener(this);
-        add(delete);
 
-        back= new JButton("Back");
-        back.setBounds(230,450,130,30);
-        back.setFont(new Font("Arial",Font.PLAIN,16));
-        back.setBackground(Color.BLACK);
-        back.setForeground(Color.WHITE);
-        back.addActionListener(this);
-        add(back);
+       
             
-        /*ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("./icons/book.png"));
-        Image i2 = i1.getImage().getScaledInstance(300,140, Image.SCALE_DEFAULT);
-        ImageIcon i3 = new ImageIcon(i2);
-        JLabel img = new JLabel(new ImageIcon(i2));
-        img.setBounds(310,8,400,200);
-        add(img);*/
-
-        setSize(800,650);
-        setLocation(300,150);
-        setVisible(true);
-    }
-
-    public void actionPerformed(ActionEvent ae){
-            if(ae.setSource)
         cbookname.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent ie) {
-                try{
+                 try{
                         Conn c=new Conn();
                         String query ="select * from bookdetails where bookName = '"+cbookname.getSelectedItem()+"'"; 
                         ResultSet rs= c.s.executeQuery(query);
@@ -146,10 +131,58 @@ public class RemoveBook extends JFrame implements ActionListener{
                 } catch(Exception e) {
                         e.printStackTrace();
                 }
-            }
-            }
-        );
+            }});
+        
+        
+        delete=new JButton("Delete");
+        delete.setBounds(50,450,130,30);
+        delete.setFont(new Font("Arial",Font.PLAIN,16));
+        delete.setBackground(Color.BLACK);
+        delete.setForeground(Color.WHITE);
+        delete.setFocusPainted(false);
+        delete.addActionListener(this);
+        add(delete);
+
+        back= new JButton("Back");
+        back.setBounds(230,450,130,30);
+        back.setFont(new Font("Arial",Font.PLAIN,16));
+        back.setBackground(Color.BLACK);
+        back.setForeground(Color.WHITE);
+        back.setFocusPainted(false);
+        back.addActionListener(this);
+        add(back);
+            
+        /*ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("./icons/book.png"));
+        Image i2 = i1.getImage().getScaledInstance(300,140, Image.SCALE_DEFAULT);
+        ImageIcon i3 = new ImageIcon(i2);
+        JLabel img = new JLabel(new ImageIcon(i2));
+        img.setBounds(310,8,400,200);
+        add(img);*/
+
+        setSize(1000,650);
+        setLocation(300,150);
+        setVisible(true);
     }
+
+   public void actionPerformed(ActionEvent ae){
+            if(ae.getSource()==delete){
+        try{
+            Conn c=new Conn();
+            String query="delete from bookDetails where bookName='"+cbookname.getSelectedItem()+"'";
+            c.s.executeUpdate(query);
+            JOptionPane.showMessageDialog(null,"Book Details Removed Successfully");
+            setVisible(false);
+            }
+        catch(Exception e){
+              e.printStackTrace();
+            }
+           }
+            else {
+                    setVisible(false);
+                    new Dashboard();
+                } 
+              }
+            
     public static void main(String args[]){
         new RemoveBook();
     }
