@@ -6,11 +6,10 @@ import java.awt.event.*;
 import java.sql.*;
 
 public class RemoveBook extends JFrame implements ActionListener{
+        Choice cbookname;
+        JButton delete,back;
+        JLabel lbledition, lblbookid, lblauthor, lblpublisher, lblpages, lblprice;
 
-    Choice cbookname;
-    JButton delete,back;
-
-//239, 250, 252
     RemoveBook(){
 
         getContentPane().setBackground(Color.WHITE);
@@ -20,7 +19,7 @@ public class RemoveBook extends JFrame implements ActionListener{
         JLabel labelheading=new JLabel("Remove Book");
         labelheading.setBounds(280,30,240,40);
         labelheading.setForeground(Color.BLACK);
-        labelheading.setFont(new Font("MONOSPACED",Font.BOLD,28));
+        labelheading.setFont(new Font("MONOSPACED",Font.BOLD,30));
         add(labelheading);
         
         
@@ -36,6 +35,7 @@ public class RemoveBook extends JFrame implements ActionListener{
         add(cbookname);  
         
         Font fontl = new Font("Arial",Font.PLAIN,17);
+        
         JLabel labeldetails=new JLabel("Your Book details are:");
         labeldetails.setBounds(50,140,250,30);
         labeldetails.setForeground(Color.BLACK);
@@ -48,7 +48,7 @@ public class RemoveBook extends JFrame implements ActionListener{
         labelbookid.setFont(fontl);
         add(labelbookid);
 
-        JLabel lblbookid=new JLabel();
+        lblbookid=new JLabel();
         lblbookid.setBounds(200,200,140,30);
         add(lblbookid);
 
@@ -58,7 +58,7 @@ public class RemoveBook extends JFrame implements ActionListener{
         labelauthor.setFont(fontl);
         add(labelauthor);
 
-        JLabel lblauthor=new JLabel();
+        lblauthor=new JLabel();
         lblauthor.setBounds(200,240,140,30);
         add(lblauthor);
         
@@ -68,7 +68,7 @@ public class RemoveBook extends JFrame implements ActionListener{
         labelpublisher.setFont(fontl);
         add(labelpublisher);
 
-        JLabel lblpublisher=new JLabel();
+        lblpublisher=new JLabel();
         lblpublisher.setBounds(200,280,140,30);
         add(lblpublisher);
         
@@ -78,7 +78,7 @@ public class RemoveBook extends JFrame implements ActionListener{
         labelpages.setFont(fontl);
         add(labelpages);
 
-        JLabel lblpages=new JLabel();
+        lblpages=new JLabel();
         lblbookid.setBounds(200,320,140,30);
         add(lblpages);
         
@@ -88,7 +88,7 @@ public class RemoveBook extends JFrame implements ActionListener{
         labelprice.setFont(fontl);
         add(labelprice);
 
-        JLabel lblprice=new JLabel();
+        lblprice=new JLabel();
         lblprice.setBounds(200,360,140,30);
         add(lblprice);
         
@@ -98,47 +98,25 @@ public class RemoveBook extends JFrame implements ActionListener{
         labeledition.setFont(fontl);
         add(labeledition);
 
-        JLabel lbledition=new JLabel();
+        lbledition=new JLabel();
         lbledition.setBounds(200,400,150,30);
         add(lbledition);
         
-       
+        delete=new JButton("Delete");
+        delete.setBounds(50,450,130,30);
+        delete.setFont(new Font("Arial",Font.PLAIN,16));
+        delete.setBackground(Color.BLACK);
+        delete.setForeground(Color.WHITE);
+        delete.addActionListener(this);
+        add(delete);
 
-           /* cbookname.addItemListener(new ItemListener() {
-                public void itemStateChanged(itemEvent ie) {
-            try{
-            Conn c=new Conn();
-            String query ="select * from bookdetails where bookName = '"+cbookname.getSelectedItem()+"'"; 
-            ResultSet rs= c.s.executeQuery(query);
-            while(rs.next()){
-                 //cbookname.add(rs.getString("bookName"));
-
-                lblbookid.setText(rs.getString("bookId"));
-                lblauthor.setText(rs.getString("authName"));
-                lblpublisher.setText(rs.getString("publisher"));
-               }
-            }
-            catch(Exception e) {
-            e.printStackTrace();
-            }
-            }
-            });
-*/
-            delete=new JButton("Delete");
-            delete.setBounds(50,450,130,30);
-            delete.setFont(new Font("Arial",Font.PLAIN,16));
-            delete.setBackground(Color.BLACK);
-            delete.setForeground(Color.WHITE);
-            delete.addActionListener(this);
-            add(delete);
-
-            back= new JButton("Back");
-            back.setBounds(230,450,130,30);
-            back.setFont(new Font("Arial",Font.PLAIN,16));
-            back.setBackground(Color.BLACK);
-            back.setForeground(Color.WHITE);
-            back.addActionListener(this);
-            add(back);
+        back= new JButton("Back");
+        back.setBounds(230,450,130,30);
+        back.setFont(new Font("Arial",Font.PLAIN,16));
+        back.setBackground(Color.BLACK);
+        back.setForeground(Color.WHITE);
+        back.addActionListener(this);
+        add(back);
             
         /*ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("./icons/book.png"));
         Image i2 = i1.getImage().getScaledInstance(300,140, Image.SCALE_DEFAULT);
@@ -147,85 +125,32 @@ public class RemoveBook extends JFrame implements ActionListener{
         img.setBounds(310,8,400,200);
         add(img);*/
 
-        
-
         setSize(800,650);
         setLocation(300,150);
         setVisible(true);
-        
     }
 
     public void actionPerformed(ActionEvent ae){
-         /* cbookname.addItemListener(new ItemListener() {
-                public void itemStateChanged(itemEvent ie) {
-            try{
-            Conn c=new Conn();
-            String query ="select * from bookdetails where bookName = '"+cbookname.getSelectedItem()+"'"; 
-            ResultSet rs= c.s.executeQuery(query);
-            while(rs.next()){
-                 //cbookname.add(rs.getString("bookName"));
-
-                lblbookid.setText(rs.getString("bookId"));
-                lblauthor.setText(rs.getString("authName"));
-                lblpublisher.setText(rs.getString("publisher"));
-               }
+            if(ae.setSource)
+        cbookname.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent ie) {
+                try{
+                        Conn c=new Conn();
+                        String query ="select * from bookdetails where bookName = '"+cbookname.getSelectedItem()+"'"; 
+                        ResultSet rs= c.s.executeQuery(query);
+                        while(rs.next()){
+                        lblbookid.setText(rs.getString("bookId"));
+                        lblauthor.setText(rs.getString("authName"));
+                        lblpublisher.setText(rs.getString("publisher"));
+                        }
+                } catch(Exception e) {
+                        e.printStackTrace();
+                }
             }
-            catch(Exception e) {
-            e.printStackTrace();
             }
-            }
-            });
-*/
-
+        );
     }
     public static void main(String args[]){
         new RemoveBook();
     }
 }
-
-/*package class_files;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.sql.*;
-
-public class RemoveBook extends JFrame{
-
-    Choice cbookname;
-
-    RemoveBook(){
-
-        getContentPane().setBackground(Color.WHITE);
-        setLayout(null);
-        setResizable(false);
-
-        JLabel labelbookname=new JLabel("Book Name");
-        labelbookname.setBounds(50,50,100,30);
-        labelbookname.setForeground(Color.BLACK);
-        add(labelbookname);
-
-        cbookname=new Choice();
-        cbookname.setBounds(200,50,100,30); 
-        add(cbookname);  
-
-        /*try{
-        Conn c=new Conn();
-            String query ="select * from bookdetails"; 
-            ResultSet rs= c.s.executeQuery(query);
-            while(rs.next()){
-                 
-            }
-            else{
-                JOptionPane.showMessageDialog(null, "Invalid Username and Password");
-                setVisible(false);
-            }
-      ;
-*/
-        
-        
-    
-   /* public static void main(String args[]){
-        new RemoveBook();
-    }
-}*/
