@@ -28,7 +28,7 @@ public class AddStaff extends JFrame implements ActionListener{
 
     AddStaff(){
         getContentPane().setBackground(Color.WHITE);
-        setTitle("Add Staff");
+        setTitle("Add Staff - Library");
         setLayout(null);
 
         img  =  new ImageIcon(ClassLoader.getSystemResource("./images/addmember.png"));
@@ -51,7 +51,7 @@ public class AddStaff extends JFrame implements ActionListener{
 
         tfsname = new JTextField();
         tfsname.setBounds(190,140,180,30);
-        tfsname.setFont(new Font("Arial",Font.BOLD,16));
+        tfsname.setFont(new Font("Arial",Font.PLAIN,16));
         add(tfsname);
 
 
@@ -62,7 +62,7 @@ public class AddStaff extends JFrame implements ActionListener{
 
         tffname = new JTextField();
         tffname.setBounds(620,140,180,30);
-        tffname.setFont(new Font("Arial",Font.BOLD,16));
+        tffname.setFont(new Font("Arial",Font.PLAIN,16));
         add(tffname);
 
         JLabel labelsalary = new JLabel("Salary:");
@@ -72,7 +72,7 @@ public class AddStaff extends JFrame implements ActionListener{
 
         tfsalary = new JTextField();
         tfsalary.setBounds(620,190,180,30);
-        tfsalary.setFont(new Font("Arial",Font.BOLD,16));
+        tfsalary.setFont(new Font("Arial",Font.PLAIN,16));
         add(tfsalary);
 
         JLabel labeldob = new JLabel("Date of Birth:");
@@ -86,7 +86,7 @@ public class AddStaff extends JFrame implements ActionListener{
 
         tfdob = new JTextField();
         tfdob.setBounds(190,190,180,30);
-        tfdob.setFont(new Font("Arial",Font.BOLD,16));
+        tfdob.setFont(new Font("Arial",Font.PLAIN,16));
         add(tfdob);
 
         JLabel labeladdress = new JLabel("Address:");
@@ -96,7 +96,7 @@ public class AddStaff extends JFrame implements ActionListener{
 
         tfaddress  = new JTextField();
         tfaddress.setBounds(190,240,180,30);
-        tfaddress.setFont(new Font("Arial",Font.BOLD,16));
+        tfaddress.setFont(new Font("Arial",Font.PLAIN,16));
         add(tfaddress);
 
         JLabel labelemail = new JLabel("Email Address:");
@@ -106,7 +106,7 @@ public class AddStaff extends JFrame implements ActionListener{
 
         tfemail  =  new JTextField();
         tfemail.setBounds(620,290,180,30);
-        tfemail.setFont(new Font("Arial",Font.BOLD,16));
+        tfemail.setFont(new Font("Arial",Font.PLAIN,16));
         add(tfemail);
 
         JLabel labelphone = new JLabel("Phone number:");
@@ -116,7 +116,7 @@ public class AddStaff extends JFrame implements ActionListener{
 
         tfphone = new JTextField();
         tfphone.setBounds(190,290,180,30);
-        tfphone.setFont(new Font("Arial",Font.BOLD,16));
+        tfphone.setFont(new Font("Arial",Font.PLAIN,16));
         add(tfphone);
 
         JLabel labeleducation = new JLabel("Highest education:");
@@ -137,14 +137,14 @@ public class AddStaff extends JFrame implements ActionListener{
 
         labelsid  =  new JLabel(""+ number);
         labelsid.setBounds(200,360,170,50);
-        labelsid.setFont(new Font("Arial",Font.BOLD,20));
+        labelsid.setFont(new Font("Arial",Font.PLAIN,20));
         add(labelsid);
 
         add = new JButton("Add Member");
         add.setBounds(200,460,170,50);
         add.setFont(new Font("Arial",Font.PLAIN,18));
         add.addActionListener(this);
-        add.setBackground(Color.BLACK);
+        add.setBackground(new Color(77, 77, 77));
         add.setForeground(Color.WHITE);
         add.setFocusPainted(false);
         add(add);
@@ -154,17 +154,16 @@ public class AddStaff extends JFrame implements ActionListener{
         back.setBounds(460,460,170,50);
         back.setFont(new Font("Arial",Font.PLAIN,18));
         back.addActionListener(this);
-        back.setBackground(Color.BLACK);
+        back.setBackground(new Color(77, 77, 77));
         back.setFocusPainted(false);
         back.setForeground(Color.WHITE);
         add(back);
 
-        setSize(1150,600);
+        setSize(1150,650);
         setLocation(200,80);
         setVisible(true);
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
     }
 	
     public void actionPerformed(ActionEvent ae){
@@ -178,7 +177,7 @@ public class AddStaff extends JFrame implements ActionListener{
             String phone  = tfphone.getText();
             String email  = tfemail.getText();
             String staffId = labelsid.getText();
-            if(memberName.length() != 0 && fatherName.length() != 0 && dob.length() != 0 && salary.length() != 0 && address.length() != 0 && education.length() != 0 && phone.length() != 0 && email.length() != 0 && staffId.length() != 0){
+            if(memberName.length() >= 3 && fatherName.length() >= 3 && dob.length() != 0 && salary.length() != 0 && address.length() != 0 && education.length() != 0 && phone.length() >= 10 && email.contains("@") && email.contains("mail.com")){
                     try{
                         Conn conn = new Conn();
                         String query = "insert into staffdetails values('"+memberName+"','"+fatherName+"','"+dob+"','"+salary+"','"+address+"','"+education+"','"+phone+"','"+email+"','"+staffId+"')";

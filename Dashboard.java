@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.geom.*;
+import class_files.*;
 
 public class Dashboard extends JFrame implements ActionListener{
     	JButton btn1, btn2, btn3, btn4, btn5, btn6;
@@ -45,7 +46,7 @@ public class Dashboard extends JFrame implements ActionListener{
         btn1.setFont(fontBtn);
         btn1.setText("Books Available");
         btn1.setBackground(new Color(77, 77, 77));
-        btn1.setForeground(new Color(255, 255, 179));
+        btn1.setForeground(new Color(255, 255, 255));
         btn1.setBorder(BorderFactory.createMatteBorder(2, 2, 4, 2, new Color(64, 64, 64)));
         btn1.setFocusPainted(false);
         btn1.addActionListener(this);
@@ -57,7 +58,7 @@ public class Dashboard extends JFrame implements ActionListener{
         btn2.setFont(fontBtn);
         btn2.setText(" Staff Details");
         btn2.setBackground(new Color(77, 77, 77));
-        btn2.setForeground(new Color(255, 255, 179));
+        btn2.setForeground(new Color(255, 255, 255));
         btn2.setBorder(BorderFactory.createMatteBorder(2, 2, 4, 2, new Color(64, 64, 64)));
         btn2.setFocusPainted(false);
         btn2.addActionListener(this);
@@ -69,7 +70,7 @@ public class Dashboard extends JFrame implements ActionListener{
         btn3.setFont(fontBtn);
         btn3.setText(" Add Books");
         btn3.setBackground(new Color(77, 77, 77));
-        btn3.setForeground(new Color(255, 255, 179));
+        btn3.setForeground(new Color(255, 255, 255));
         btn3.setBorder(BorderFactory.createMatteBorder(2, 2, 4, 2, new Color(64, 64, 64)));
         btn3.setFocusPainted(false);
         btn3.addActionListener(this);
@@ -81,7 +82,7 @@ public class Dashboard extends JFrame implements ActionListener{
         btn4.setFont(fontBtn);
         btn4.setText(" Add Staff");
         btn4.setBackground(new Color(77, 77, 77));
-        btn4.setForeground(new Color(255, 255, 179));
+        btn4.setForeground(new Color(255, 255, 255));
         btn4.setBorder(BorderFactory.createMatteBorder(2, 2, 4, 2, new Color(64, 64, 64)));
         btn4.setFocusPainted(false);
         btn4.addActionListener(this);
@@ -93,19 +94,19 @@ public class Dashboard extends JFrame implements ActionListener{
         btn5.setFont(fontBtn);
         btn5.setText(" Remove Books");
         btn5.setBackground(new Color(77, 77, 77));
-        btn5.setForeground(new Color(255, 255, 179));
+        btn5.setForeground(new Color(255, 255, 255));
         btn5.setBorder(BorderFactory.createMatteBorder(2, 2, 4, 2, new Color(64, 64, 64)));
         btn5.setFocusPainted(false);
         btn5.addActionListener(this);
 
-        imgBtn6 = new ImageIcon(ClassLoader.getSystemResource("images/removeStaff.png"));
-        Image imgBtn6Temp = imgBtn6.getImage().getScaledInstance(50, 45, Image.SCALE_REPLICATE);
+        imgBtn6 = new ImageIcon(ClassLoader.getSystemResource("images/siblings.png"));
+        Image imgBtn6Temp = imgBtn6.getImage().getScaledInstance(50, 45, Image.SCALE_SMOOTH);
         btn6 = new JButton(new ImageIcon(imgBtn6Temp));
         btn6.setBounds(625, 460, 300, 90);
         btn6.setFont(fontBtn);
-        btn6.setText(" Remove Staff");
+        btn6.setText(" About Us");
         btn6.setBackground(new Color(77, 77, 77));
-        btn6.setForeground(new Color(255, 255, 179));
+        btn6.setForeground(new Color(255, 255, 255));
         btn6.setBorder(BorderFactory.createMatteBorder(2, 2, 4, 2, new Color(64, 64, 64)));
         btn6.setFocusPainted(false);
         btn6.addActionListener(this);
@@ -118,7 +119,6 @@ public class Dashboard extends JFrame implements ActionListener{
         add(btn5);
         add(btn6);
 
-	// Background image
 	backImg = new ImageIcon(ClassLoader.getSystemResource("images/first.png"));
         backImg2 = backImg.getImage().getScaledInstance(800, 190, Image.SCALE_SMOOTH);
         backLbl = new JLabel(new ImageIcon(backImg2));
@@ -129,7 +129,7 @@ public class Dashboard extends JFrame implements ActionListener{
         setVisible(true);
     }
 	public void paint(Graphics g) {
-        super.paint(g);  // fixes the immediate problem.
+        super.paint(g);
         Graphics2D g2 = (Graphics2D) g;
         Line2D vLine = new Line2D.Float(545, 160, 545, 600);
         Line2D hLine1 = new Line2D.Float(140, 295, 940, 295);
@@ -157,13 +157,11 @@ public class Dashboard extends JFrame implements ActionListener{
         }
         else if(ae.getSource() == btn5){
             setVisible(false);
-	    
-            //new RemoveBook();
+	    new RemoveBook();
         }
         else{
             setVisible(false);
-
-            // new RemoveStaff();
+            new About();
         }
     }
     public static void main(String[] args) {

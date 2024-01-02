@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.*;
 import java.sql.ResultSet;
 import javax.swing.ImageIcon;
 import javax.swing.BorderFactory;
@@ -13,7 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import java.awt.*;
+import javax.swing.table.TableColumnModel;
 import net.proteanit.sql.DbUtils;
 
 public class ViewBooks extends JFrame implements ActionListener{
@@ -23,21 +24,22 @@ public class ViewBooks extends JFrame implements ActionListener{
 	JLabel titleLbl, searchLbl, footimg;
         ImageIcon imgFoot;
         Image imgfootTemp;
+        TableColumnModel columnModel;
 	
 	ViewBooks(){
 	getContentPane().setBackground(new Color(239, 250, 252));
 	setLayout(null);
-	setSize(1200, 800);
+	setSize(1400, 800);
 	setTitle("Available Books");
-	setLocation(160, 20);
+	setLocation(80, 20);
 	setVisible(true);
 	setResizable(false);
 	
 	titleLbl = new JLabel("Books Placed in Bookshelves");
-	titleLbl.setBounds(360, 10, 500, 70);
+	titleLbl.setBounds(450, 10, 500, 70);
 	titleLbl.setFont(new Font("Monospaced", Font.BOLD, 30));
 	add(titleLbl);
-	
+
 	searchLbl = new JLabel("Search by Book name : ");
 	searchLbl.setBounds(70, 100, 200, 30);
 	searchLbl.setFont(new Font("Arial", Font.PLAIN, 18));
@@ -46,8 +48,8 @@ public class ViewBooks extends JFrame implements ActionListener{
 	chooseBook = new Choice();
         chooseBook.setBackground(getContentPane().getBackground());
         chooseBook.requestFocus();
-        chooseBook.setBounds(280, 100, 220, 30);
-	chooseBook.setFont(new Font("Arial", Font.PLAIN, 18));
+        chooseBook.setBounds(280, 100, 300, 30);
+	chooseBook.setFont(new Font("Arial", Font.PLAIN, 17));
 	add(chooseBook);
 	
 	Font font = new Font("Arial", Font.PLAIN, 16);
@@ -88,16 +90,19 @@ public class ViewBooks extends JFrame implements ActionListener{
 	}catch(Exception e){
 		e.printStackTrace();
 	}
-       
-        imgFoot = new ImageIcon(ClassLoader.getSystemResource("images/viewbookFoot.png"));
-        imgfootTemp = imgFoot.getImage().getScaledInstance(1000, 120, Image.SCALE_SMOOTH);
-        footimg = new JLabel(new ImageIcon(imgfootTemp));
-	footimg.setBounds(100, 645, 1000, 120);
-	add(footimg); 
         
 	JScrollPane jsp = new JScrollPane(table);
-	jsp.setBounds(20, 220, 1150, 250);
-        
+	jsp.setBounds(20, 220, 1350, 250);
+       
+        columnModel = table.getColumnModel();
+        columnModel.getColumn(0).setPreferredWidth(220);
+        columnModel.getColumn(1).setPreferredWidth(140);
+        columnModel.getColumn(2).setPreferredWidth(40);
+        columnModel.getColumn(3).setPreferredWidth(130);
+        columnModel.getColumn(4).setPreferredWidth(60);
+        columnModel.getColumn(5).setPreferredWidth(100);
+        columnModel.getColumn(6).setPreferredWidth(70);
+         
 	table.setBackground(getContentPane().getBackground());
         table.getTableHeader().setBackground(getContentPane().getBackground());
         table.getTableHeader().setFont(new Font("Arial", Font.BOLD, 16));
@@ -107,9 +112,15 @@ public class ViewBooks extends JFrame implements ActionListener{
         table.setRowHeight(25);
         table.setGridColor(new Color(133, 201, 214));
         table.setEnabled(false);
+        
         jsp.setBorder(BorderFactory.createEmptyBorder());
         add(jsp);
 
+        imgFoot = new ImageIcon(ClassLoader.getSystemResource("images/viewbookFoot.png"));
+        imgfootTemp = imgFoot.getImage().getScaledInstance(1000, 150, Image.SCALE_SMOOTH);
+        footimg = new JLabel(new ImageIcon(imgfootTemp));
+	footimg.setBounds(200, 620, 1000, 150);
+	add(footimg); 
 	}
 
 	public void actionPerformed(ActionEvent ae){
@@ -119,6 +130,13 @@ public class ViewBooks extends JFrame implements ActionListener{
 				Conn c =new Conn();
 				ResultSet rs = c.s.executeQuery(query);
 				table.setModel(DbUtils.resultSetToTableModel(rs));
+                                columnModel.getColumn(0).setPreferredWidth(220);
+                                columnModel.getColumn(1).setPreferredWidth(140);
+                                columnModel.getColumn(2).setPreferredWidth(40);
+                                columnModel.getColumn(3).setPreferredWidth(130);
+                                columnModel.getColumn(4).setPreferredWidth(60);
+                                columnModel.getColumn(5).setPreferredWidth(100);
+                                columnModel.getColumn(6).setPreferredWidth(70);
 			}catch(Exception e){
 				e.printStackTrace();
 			}

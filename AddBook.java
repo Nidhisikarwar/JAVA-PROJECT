@@ -1,10 +1,12 @@
 package class_files;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 import java.sql.*;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -12,16 +14,18 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 public class AddBook extends JFrame implements ActionListener{
     Random id=new Random();
-    int number=id.nextInt(99999999);
-    JLabel labelid;
+    int number=id.nextInt(99999);
+    JLabel labelid, img;
     JTextField tfname, tfauthor, tfpage, tfpublisher, tfprice, tfedition;
     JButton add,back;
-
+    ImageIcon i1;
+    Image i2;
+    
     AddBook(){
-        getContentPane().setBackground(Color.WHITE);//background is white
+        getContentPane().setBackground(Color.WHITE);
         setLayout(null);
         setResizable(false);
-        setTitle("Add new Book");
+        setTitle("Add new Book - Library");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JLabel heading=new JLabel("<html><p style = 'border-bottom: 3px solid rgb(BLACK);'> Add New Book </p></html>");
@@ -31,9 +35,14 @@ public class AddBook extends JFrame implements ActionListener{
         heading.setForeground(Color.BLACK);
         add(heading);
 
+        i1 = new ImageIcon(ClassLoader.getSystemResource("images/addbookpage.gif"));
+        i2 = i1.getImage().getScaledInstance(325,450, Image.SCALE_AREA_AVERAGING);
+        img = new JLabel(new ImageIcon(i2));
+        img.setBounds(450,40,325,450);
+        add(img);
 
         Font font = new Font("Arial", Font.BOLD,18);
-        Font tfFont = new Font("Arial" , Font.BOLD, 16);
+        Font tfFont = new Font("Arial" , Font.PLAIN, 16);
 
         JLabel labelname=new JLabel("Name of the book:");
         labelname.setBounds(50,140,170,50);
@@ -110,7 +119,7 @@ public class AddBook extends JFrame implements ActionListener{
         add.setFont(new Font("serif",Font.BOLD,16));
         add.addActionListener(this);
         add.setFocusPainted(false);
-        add.setBackground(Color.BLACK);
+        add.setBackground(new Color(77, 77, 77));
         add.setForeground(Color.WHITE);
         add(add);
         
@@ -118,8 +127,8 @@ public class AddBook extends JFrame implements ActionListener{
         back.setBounds(420,520,170,50);
         back.setFont(new Font("serif",Font.BOLD,16));
         back.addActionListener(this);
-        add.setFocusPainted(false);
-        back.setBackground(Color.BLACK);
+        back.setFocusPainted(false);
+        back.setBackground(new Color(77, 77, 77));
         back.setForeground(Color.WHITE);
 
         setSize(800,700);

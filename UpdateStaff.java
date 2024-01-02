@@ -1,24 +1,20 @@
 package class_files;
 import java.awt.*;
 import javax.swing.*;
-import java.util.*;
 import java.awt.event.*;
 import java.sql.*;
 
-
-public class UpdateStaff extends JFrame/* implements ActionListener*/{
-    Random sid=new Random();
-    int number=sid.nextInt(999999);
-
-    JTextField tfsname,tffname,tfsalary,tfdob,tfaddress,tfemail,tfphone,tfeducation; 
-    JButton add,back;
+public class UpdateStaff extends JFrame implements ActionListener{
+    JTextField tffname,tfaddress,tfemail,tfphone,tfeducation; 
+    JButton update,back;
+    JLabel lblname, lblsalary, lbldob, labelsid;
     String memberName;
 
     UpdateStaff(String memberName){
-        this.memberName=memberName;
-        getContentPane().setBackground(Color.WHITE);//background is white
+        this.memberName = memberName;
+        getContentPane().setBackground(Color.WHITE);
         setLayout(null);
-        setTitle("Update Staff details");
+        setTitle("Update Staff details - Library");
 
         JLabel heading=new JLabel("<html><p style='border-bottom: 3px solid rgb(BLACK);'> Update Staff Details </p></html>");
         heading.setBounds(230,37,500,50);
@@ -27,13 +23,16 @@ public class UpdateStaff extends JFrame/* implements ActionListener*/{
         heading.setForeground(Color.BLACK);
         add(heading);
 
+        Font font = new Font("Arial", Font.PLAIN, 18);
+        
         JLabel labelsname=new JLabel("Name:");
         labelsname.setBounds(50,120,180,65);
         labelsname.setFont(new Font("Arial",Font.BOLD,18));
         add(labelsname);
 
-        JLabel lblname=new JLabel();
+        lblname = new JLabel();
         lblname.setBounds(200,140,180,30);
+        lblname.setFont(font);
         add(lblname);
 
         JLabel labelfname=new JLabel("Fathers Name:");
@@ -43,6 +42,7 @@ public class UpdateStaff extends JFrame/* implements ActionListener*/{
 
         tffname=new JTextField();
         tffname.setBounds(600,140,180,30);
+        tffname.setFont(font);
         add(tffname);
 
         JLabel labelsalary=new JLabel("Salary:");
@@ -50,8 +50,9 @@ public class UpdateStaff extends JFrame/* implements ActionListener*/{
         labelsalary.setFont(new Font("Arial",Font.BOLD,18));
         add(labelsalary);
 
-        JLabel lblsalary=new JLabel();
+        lblsalary=new JLabel();
         lblsalary.setBounds(600,190,180,30);
+        lblsalary.setFont(font);
         add(lblsalary);
 
         JLabel labeldob=new JLabel("Date of Birth:");
@@ -63,8 +64,9 @@ public class UpdateStaff extends JFrame/* implements ActionListener*/{
         dcdob.setBounds(150,190,170,50);
         add(dcdob);*/
 
-        JLabel lbldob=new JLabel();
+        lbldob=new JLabel();
         lbldob.setBounds(200,190,180,30);
+        lbldob.setFont(font);
         add(lbldob);
 
         JLabel labeladdress=new JLabel("Address:");
@@ -74,6 +76,7 @@ public class UpdateStaff extends JFrame/* implements ActionListener*/{
 
         tfaddress =new JTextField();
         tfaddress.setBounds(200,240,180,30);
+        tfaddress.setFont(font);
         add(tfaddress);
 
         JLabel labelemail=new JLabel("Email Address:");
@@ -83,6 +86,7 @@ public class UpdateStaff extends JFrame/* implements ActionListener*/{
 
         tfemail=new JTextField();
         tfemail.setBounds(600,290,180,30);
+        tfemail.setFont(font);        
         add(tfemail);
 
         JLabel labelphone=new JLabel("Phone number:");
@@ -92,6 +96,7 @@ public class UpdateStaff extends JFrame/* implements ActionListener*/{
 
         tfphone=new JTextField();
         tfphone.setBounds(200,290,180,30);
+        tfphone.setFont(font);
         add(tfphone);
 
         JLabel labeleducation=new JLabel("Highest education:");
@@ -99,14 +104,10 @@ public class UpdateStaff extends JFrame/* implements ActionListener*/{
         labeleducation.setFont(new Font("Arial",Font.BOLD,18));
         add(labeleducation);
 
-        /*tfeducation=new JTextField();
-        tfeducation.setBounds(600,240,180,30);
-        add(tfeducation); */
-
-        //String courses[]={"BBA","BCA","BA","B.COM","BTech","MBA","BSC","MSC","MTech","Phd"};
-        JTextField tfeducation=new JTextField();
+        tfeducation=new JTextField();
         tfeducation.setBounds(600,240,180,30);
         tfeducation.setBackground(Color.WHITE);
+        tfeducation.setFont(font);
         add(tfeducation);
 
         JLabel labelstaffid=new JLabel("Staff Id:");
@@ -114,12 +115,12 @@ public class UpdateStaff extends JFrame/* implements ActionListener*/{
         labelstaffid.setFont(new Font("Arial",Font.BOLD,20));
         add(labelstaffid);
 
-        JLabel labelsid=new JLabel();
+        labelsid=new JLabel();
         labelsid.setBounds(200,360,170,50);
-        labelsid.setFont(new Font("Arial",Font.BOLD,20));
+        labelsid.setFont(new Font("Arial",Font.PLAIN,20));
         add(labelsid);
 
-       /* try{
+        try{
             Conn c=new Conn();
             String query= "select * from staffdetails where memberName= '"+memberName+"'";
             ResultSet rs=c.s.executeQuery(query);
@@ -128,45 +129,68 @@ public class UpdateStaff extends JFrame/* implements ActionListener*/{
                     tffname.setText(rs.getString("fatherName"));
                     lbldob.setText(rs.getString("dob"));
                     tfaddress.setText(rs.getString("address"));
-                    tfsalary.setText(rs.getString("salary"));
+                    lblsalary.setText(rs.getString("salary"));
                     tfphone.setText(rs.getString("phone"));
                     tfemail.setText(rs.getString("email"));
-                    tfeducation.setText(rs.getString("education"));   
-                    
+                    tfeducation.setText(rs.getString("education"));
+                    labelsid.setText(rs.getString("staffId"));
                 }
             }
         catch(Exception e){
             e.printStackTrace();
         }
-         */
-        add=new JButton("Update");
-        add.setBounds(200,460,170,50);
-        add.setFont(new Font("Arial",Font.PLAIN,18));
-      //  add.addActionListener(this);
-        add.setBackground(Color.BLACK);
-        add.setForeground(Color.WHITE);
-        add.setFocusPainted(false);
-        add(add);
         
+        update=new JButton("Update Detail");
+        update.setBounds(200,460,170,50);
+        update.setFont(new Font("Arial",Font.PLAIN,18));
+        update.addActionListener(this);
+        update.setBackground(Color.BLACK);
+        update.setForeground(Color.WHITE);
+        update.setFocusPainted(false);
+        add(update);
 
         back=new JButton("Back");
         back.setBounds(460,460,170,50);
         back.setFont(new Font("Arial",Font.PLAIN,18));
-       // back.addActionListener(this);
+        back.addActionListener(this);
         back.setBackground(Color.BLACK);
         back.setFocusPainted(false);
         back.setForeground(Color.WHITE);
-
+        add(back);
 
         setSize(860,650);
         setLocation(300,50);
         setVisible(true);
         setResizable(false);
-        add(back);
-        
     }
-
-   
+    public void actionPerformed(ActionEvent ae){
+        if(ae.getSource() == update){
+            String fatherName = tffname.getText();
+            String address = tfaddress.getText();
+            String education = tfeducation.getText();
+            String phone  = tfphone.getText();
+            String email  = tfemail.getText();
+            if(memberName.length() != 0 && fatherName.length() >= 3 && address.length() != 0 && education.length() != 0 && phone.length() >= 10 && email.contains("@") && email.contains("mail.com")){
+                    try{
+                        Conn conn = new Conn();
+                        String query = "update staffdetails set fatherName = '"+fatherName+"' , address = '"+address+"' , education = '"+education+"' , phone = '"+phone+"' , email = '"+email+"' where memberName = '"+memberName+"'";
+                        conn.s.executeUpdate(query);
+                        JOptionPane.showMessageDialog(null, "Member Details Updated Successfully");
+                        setVisible(false);
+                        new StaffDetails();
+                    } catch(Exception e){
+                        e.printStackTrace();
+                    }
+            }
+            else{
+                    JOptionPane.showMessageDialog(null, "All Details Field are Mandatory");
+            } 
+        }
+        else{
+                setVisible(false);
+                new StaffDetails();
+        }
+    }
     public static void main(String args[]){
         new UpdateStaff("");
     }
