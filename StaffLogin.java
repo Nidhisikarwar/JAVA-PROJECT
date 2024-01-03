@@ -3,12 +3,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
+import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
-public class Login extends JFrame implements ActionListener{
+public class StaffLogin extends JFrame implements ActionListener{
     JTextField tfusername,tfpassword;
     JCheckBox cbshow;
     JButton sign, jblogin;
-    Login(){
+    StaffLogin(){
 
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
@@ -53,16 +54,6 @@ public class Login extends JFrame implements ActionListener{
 	cbshow.setBackground(Color.WHITE);
 	cbshow.setSelected(false);
 	add(cbshow);
-
-        sign = new JButton("New User");
-        sign.setBounds(340,305,60,35);
-        sign.setBackground(getContentPane().getBackground());
-        sign.setForeground(new Color(38, 50, 56));
-        sign.setFont(new Font("Arial",Font.BOLD,13));
-        sign.setBorder(BorderFactory.createEmptyBorder());
-        sign.setFocusPainted(false);
-        sign.addActionListener(this);
-        add(sign); 
     
         jblogin = new JButton("LOGIN");
         jblogin.setBounds(80,380,320,40);
@@ -97,12 +88,12 @@ public class Login extends JFrame implements ActionListener{
                     ((JPasswordField) tfpassword).setEchoChar('*');
 		}
 	    }
-           else if(ae.getSource() == jblogin){ 
+           else{ 
                 try{
-                        String susername=tfusername.getText();
-                        String spassword=tfpassword.getText();
-                        Conn c = new Conn();
-                        String query="select * from login where susername= '"+susername+"' and binary spassword= '"+spassword+"' ";
+                        String username=tfusername.getText();
+                        String password=tfpassword.getText();
+                        Conn c=new Conn();
+                        String query ="select * from stafflogin where username = '"+ username+"' and binary password = '"+ password+"' ";
                         ResultSet rs= c.s.executeQuery(query);
                         if(rs.next()){
 			        setVisible(false);
@@ -115,13 +106,9 @@ public class Login extends JFrame implements ActionListener{
                         e.printStackTrace();
                 }
            }
-           else{
-                setVisible(false);
-                new SignUp();
-           }
     }
    
     public static void main(String args[]){
-        new Login();
+        new StaffLogin();
     }
 }
