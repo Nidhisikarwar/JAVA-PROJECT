@@ -153,15 +153,15 @@ public class StudentDashboard extends JFrame implements ActionListener{
         }
         else if(ae.getSource() == btn3){
             setVisible(false);
-            new IssueBook();
+            //new IssueBook();
         }
         else if(ae.getSource() == btn4){
             setVisible(false);
-            new UserDetails();
+            //new UserDetails();
         }
         else if(ae.getSource() == btn5){
             setVisible(false);
-            new ReturnBook();
+            //new ReturnBook();
         }
         else{
             setVisible(false);

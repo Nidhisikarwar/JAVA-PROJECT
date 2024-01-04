@@ -12,14 +12,14 @@ public class RemoveBook extends JFrame implements ActionListener{
         Image i2;
 
     RemoveBook(){
-        getContentPane().setBackground(new Color(255, 230, 204));
+        getContentPane().setBackground(new Color(196, 227, 237));
         setLayout(null);
         setResizable(false);
         setTitle("Remove Book - Library");
         
-        JLabel labelheading=new JLabel("<html><p style = 'border-bottom: 5px solid rgb(BLACK);'>Remove Book</p></html>");
+        JLabel labelheading=new JLabel("<html><p style = 'border-bottom: 5px solid rgb(6,129,164);'>Remove Book</p></html>");
         labelheading.setBounds(190,30,290,40);
-        labelheading.setForeground(Color.BLACK);
+        labelheading.setForeground(new Color(6,129,164));
         labelheading.setFont(new Font("MONOSPACED",Font.BOLD,30));
         add(labelheading);
 
@@ -141,7 +141,7 @@ public class RemoveBook extends JFrame implements ActionListener{
         delete=new JButton("Delete");
         delete.setBounds(50,470,130,30);
         delete.setFont(new Font("Arial",Font.BOLD,18));
-        delete.setBackground(new Color(77, 77, 77));
+        delete.setBackground(new Color(6,129,164));
         delete.setForeground(Color.WHITE);
         delete.setFocusPainted(false);
         delete.addActionListener(this);
@@ -150,7 +150,7 @@ public class RemoveBook extends JFrame implements ActionListener{
         back= new JButton("Back");
         back.setBounds(270,470,130,30);
         back.setFont(new Font("Arial",Font.BOLD,18));
-        back.setBackground(new Color(77, 77, 77));
+        back.setBackground(new Color(6,129,164));
         back.setForeground(Color.WHITE);
         back.setFocusPainted(false);
         back.addActionListener(this);

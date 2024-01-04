@@ -162,6 +162,7 @@ public class UpdateStaff extends JFrame implements ActionListener{
         setLocation(300,50);
         setVisible(true);
         setResizable(false);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource() == update){

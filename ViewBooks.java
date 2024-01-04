@@ -34,6 +34,7 @@ public class ViewBooks extends JFrame implements ActionListener{
 	setLocation(80, 20);
 	setVisible(true);
 	setResizable(false);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
 	
 	titleLbl = new JLabel("Books Placed in Bookshelves");
 	titleLbl.setBounds(450, 10, 500, 70);

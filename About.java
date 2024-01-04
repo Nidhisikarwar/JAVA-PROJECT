@@ -2,9 +2,7 @@ package class_files;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.ImageIcon;
-import java.awt.Image;
-import javax.swing.BorderFactory;
+import java.awt.geom.*;
 
 public class About extends JFrame implements ActionListener{
         JLabel heading;
@@ -23,6 +21,7 @@ public class About extends JFrame implements ActionListener{
                 heading = new JLabel("About Us");
                 heading.setBounds(420, 10, 180, 70);
                 heading.setFont(new Font("Monospaced", Font.BOLD, 35));
+                heading.setForeground(new Color(254, 115, 103));
                 add(heading);
 
                 
@@ -33,7 +32,9 @@ public class About extends JFrame implements ActionListener{
                 String str2 = "       Our aim is to provide a welcoming and inclusive space where individuals of all ages can discover the joy of reading, expand their knowledge, and connect with each other. We strive to be a resource that empowers our community through access to a diverse range of materials. While rooted in tradition, we embrace technology to enhance the library experience, making information and resources more accessible.";
                 String str3 = "Our team is committed to creating a positive and enriching environment for our patrons.";
                 String str4 = "Bhushan Harode & Nidhi Sikarwar\nBachelor of Science (Computer Science, Electronics, Mathematics)\nSchool of Electronics\nDevi Ahilya Vishwavidyalaya, Indore";
-                String str5 = "We love hearing from you! If you have any questions, suggestions, or just want to say hello, feel free to contact us or drop us a text.\nThank you for being a part of the Virtual Library community!";
+                String str5 = "We love hearing from you! If you have any questions, suggestions, or just want to say hello, feel free to contact us or drop us a mail.\nThank you for being a part of the Virtual Library community!";
+                String str6 = "Nidhisikarwar24@gmail.com,       github.com/Nidhisikarwar";
+                String str7 = "Bhushanharode0246@gmail.com,        github.com/Bhushan0246";
                 
                 JTextArea ta = new JTextArea(str1);
                 ta.setEditable(false);
@@ -48,6 +49,7 @@ public class About extends JFrame implements ActionListener{
                 JLabel moto = new JLabel("Our Mission : Inspiring Minds, Enriching Lives.");
                 moto.setFont(font1);
                 moto.setBounds(20, 160, 950, 40);
+                moto.setForeground(new Color(254, 115, 103));
                 add(moto);
                 
                 JTextArea ta2 = new JTextArea(str2);
@@ -63,6 +65,7 @@ public class About extends JFrame implements ActionListener{
                 JLabel team = new JLabel("Our Team :");
                 team.setFont(font1);
                 team.setBounds(20, 315, 950, 40);
+                team.setForeground(new Color(254, 115, 103));
                 add(team);
                 
                 JTextArea ta3 = new JTextArea(str3);
@@ -78,6 +81,7 @@ public class About extends JFrame implements ActionListener{
                 JLabel dev = new JLabel("Developers : ");
                 dev.setBounds(20, 400, 950, 40);
                 dev.setFont(font1);
+                dev.setForeground(new Color(254, 115, 103));
                 add(dev);
 
                 JTextArea ta4 = new JTextArea(str4);
@@ -93,6 +97,7 @@ public class About extends JFrame implements ActionListener{
                 JLabel cont = new JLabel("Contact Us :");
                 cont.setFont(font1);
                 cont.setBounds(20, 550, 950, 30);
+                cont.setForeground(new Color(254, 115, 103));
                 add(cont);
 
                 JTextArea ta5 = new JTextArea(str5);
@@ -102,9 +107,20 @@ public class About extends JFrame implements ActionListener{
                 ta5.setFont(font2);
                 ta5.setBackground(new Color(getContentPane().getBackground().getRGB(), true));
                 ta5.setForeground(new Color(getContentPane().getForeground().getRGB(), true));
-                ta5.setBounds(20, 590, 950, 70);
+                ta5.setBounds(20, 590, 950, 45);
                 add(ta5);
 
+                JLabel id1 = new JLabel(str6);
+                id1.setFont(font1);
+                id1.setBounds(20, 640, 800, 20);
+                id1.setForeground(new Color(254, 115, 103));
+                add(id1);
+                JLabel id2 = new JLabel(str7);
+                id2.setFont(font1);
+                id2.setBounds(20, 665, 800, 20);
+                id2.setForeground(new Color(254, 115, 103));
+                add(id2);
+                
                 back = new JButton("Back");
         	back.setBounds(850, 660, 100, 30);
 	        back.setFont(font1);
@@ -114,7 +130,19 @@ public class About extends JFrame implements ActionListener{
 	        back.setFocusPainted(false);
         	add(back);
         }
-
+        
+        public void paint(Graphics g) {
+        super.paint(g);
+        Graphics2D g2 = (Graphics2D) g;
+        g2.setPaint(new Color(252, 137,124));
+        Line2D hLine = new Line2D.Float(55, 335, 925, 335);
+        Line2D hLine1 = new Line2D.Float(55, 180, 925, 180);
+        Line2D hLine2 = new Line2D.Float(55, 570, 925, 570);
+        g2.draw(hLine);
+        g2.draw(hLine1);
+        g2.draw(hLine2);
+        }
+        
         public void actionPerformed(ActionEvent ae){
                 if(ae.getSource() == back){
                         setVisible(false);

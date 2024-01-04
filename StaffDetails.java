@@ -32,6 +32,7 @@ public class StaffDetails extends JFrame implements ActionListener{
 	setLocation(80, 20);
 	setVisible(true);
 	setResizable(false);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 	titleLabel = new JLabel("Staff Details");
 	titleLabel.setBounds(570, 10, 280, 70);
@@ -124,7 +125,7 @@ public class StaffDetails extends JFrame implements ActionListener{
         jsp.setBorder(BorderFactory.createEmptyBorder());
 	add(jsp);
 	}
-	
+        
 	public void actionPerformed(ActionEvent ae){
 		if(ae.getSource() == searchEmp){
 			String query = "select * from staffdetails where memberName = '"+choosEmp.getSelectedItem()+"'";
