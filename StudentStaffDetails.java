@@ -12,7 +12,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.TableColumnModel;
 import class_files.Conn;
-import class_files.Dashboard;
+import class_files.StudentDashboard;
 import java.awt.Dimension;
 import javax.swing.BorderFactory;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
@@ -24,9 +24,11 @@ public class StudentStaffDetails extends JFrame implements ActionListener{
 	JButton searchEmp, back, update;
 	JLabel titleLabel, searchEmpLbl;
         TableColumnModel columnModel;
-
-	StudentStaffDetails(){
-	getContentPane().setBackground(new Color(239, 250, 252));
+        String username;
+        
+	StudentStaffDetails(String username){
+	this.username = username;
+        getContentPane().setBackground(new Color(239, 250, 252));
 	setLayout(null);
         setTitle("Staff Details");
 	setSize(1400, 800);
@@ -60,6 +62,7 @@ public class StudentStaffDetails extends JFrame implements ActionListener{
 	searchEmp.setForeground(Color.WHITE);
 	searchEmp.addActionListener(this);
 	searchEmp.setFocusPainted(false);
+        searchEmp.setBorder(BorderFactory.createEmptyBorder());
 	add(searchEmp);
 
 	back = new JButton("Back");
@@ -69,6 +72,7 @@ public class StudentStaffDetails extends JFrame implements ActionListener{
 	back.setForeground(Color.WHITE);
 	back.addActionListener(this);
 	back.setFocusPainted(false);
+        back.setBorder(BorderFactory.createEmptyBorder());
 	add(back);
 	
 	try{
@@ -92,7 +96,7 @@ public class StudentStaffDetails extends JFrame implements ActionListener{
 	
 	
 	JScrollPane jsp = new JScrollPane(sTable);
-	jsp.setBounds(20, 220, 1350, 200);
+	jsp.setBounds(20, 220, 1350, 400);
         
         columnModel = sTable.getColumnModel();
         columnModel.getColumn(0).setPreferredWidth(80);
@@ -131,11 +135,11 @@ public class StudentStaffDetails extends JFrame implements ActionListener{
 		}
                 else {
 			setVisible(false);
-			new StudentDashboard();
+			new StudentDashboard(username);
 		}
 	}
 	
 	public static void main(String[] args){
-		new StudentStaffDetails();
+		new StudentStaffDetails("");
 	}
 }

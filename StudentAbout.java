@@ -1,16 +1,26 @@
 package class_files;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.awt.geom.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.geom.Line2D;
 
-public class About extends JFrame implements ActionListener {
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextArea;
+
+public class StudentAbout extends JFrame implements ActionListener {
 
         JLabel heading;
         JButton back;
+        String username;
 
-        About() {
+        StudentAbout(String username) {
+                this.username = username;
                 setTitle("About - Library");
                 setSize(1000, 750);
                 setLocation(250, 30);
@@ -147,11 +157,11 @@ public class About extends JFrame implements ActionListener {
         public void actionPerformed(ActionEvent ae) {
                 if (ae.getSource() == back) {
                         setVisible(false);
-                        new Dashboard();
+                        new StudentDashboard(username);
                 }
         }
 
         public static void main(String[] args) {
-                new About();
+                new StudentAbout("");
         }
 }

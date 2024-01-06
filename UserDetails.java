@@ -21,14 +21,14 @@ public class UserDetails extends JFrame implements ActionListener{
                 setTitle("User Details - Library");
                 setLayout(null);
                 setLocation(100, 50);
-                setSize(1100, 750);
+                setSize(1400, 750);
                 setResizable(false);
                 getContentPane().setBackground(new Color(255, 250, 250));
                 setDefaultCloseOperation(EXIT_ON_CLOSE);
 
                 heading = new JLabel("<html><p style = 'border-bottom: 3px solid rgb(77, 77, 77);'>User Details Table</p></html>");
                 heading.setFont(new Font("Monospaced", Font.BOLD, 32));
-                heading.setBounds(300, 20, 400, 50);
+                heading.setBounds(480, 20, 400, 50);
                 heading.setForeground(new Color(77, 77, 77));
                 add(heading);
                 
@@ -67,7 +67,7 @@ public class UserDetails extends JFrame implements ActionListener{
                 uImg = new ImageIcon(ClassLoader.getSystemResource("images/user.png"));
                 uImg2 = uImg.getImage().getScaledInstance(250, 180, Image.SCALE_SMOOTH);
                 uLbl = new JLabel(new ImageIcon(uImg2));
-	        uLbl.setBounds(800, 5, 250, 180);
+	        uLbl.setBounds(1100, 5, 250, 180);
 	        add(uLbl);
                 
                 try{
@@ -90,14 +90,20 @@ public class UserDetails extends JFrame implements ActionListener{
 	}
         
 	JScrollPane jsp = new JScrollPane(uTable);
-	jsp.setBounds(20, 250, 1050, 300);
+	jsp.setBounds(5, 250, 1380, 450);
         
         columnModel = uTable.getColumnModel();
-        columnModel.getColumn(0).setPreferredWidth(100);
-        columnModel.getColumn(1).setPreferredWidth(100);
-        columnModel.getColumn(2).setPreferredWidth(100);
-        columnModel.getColumn(3).setPreferredWidth(200);
-        columnModel.getColumn(4).setPreferredWidth(100);
+        columnModel.getColumn(0).setPreferredWidth(70);
+        columnModel.getColumn(1).setPreferredWidth(70);
+        columnModel.getColumn(2).setPreferredWidth(70);
+        columnModel.getColumn(3).setPreferredWidth(160);
+        columnModel.getColumn(4).setPreferredWidth(65);
+        columnModel.getColumn(5).setPreferredWidth(80);
+        columnModel.getColumn(6).setPreferredWidth(70);
+        columnModel.getColumn(7).setPreferredWidth(60);
+        columnModel.getColumn(8).setPreferredWidth(70);
+        columnModel.getColumn(9).setPreferredWidth(60);
+        columnModel.getColumn(10).setPreferredWidth(80);
 
         uTable.setBackground(getContentPane().getBackground());
         uTable.getTableHeader().setBackground(getContentPane().getBackground());
@@ -116,7 +122,7 @@ public class UserDetails extends JFrame implements ActionListener{
         
         public void actionPerformed(ActionEvent ae){
 		if(ae.getSource() == search){
-			String query = "select * from staffdetails where firstname = '"+chooseuser.getSelectedItem()+"'";
+			String query = "select * from studentdetails where firstname = '"+chooseuser.getSelectedItem()+"'";
 			try{
 				Conn c =new Conn();
 				ResultSet rs = c.s.executeQuery(query);

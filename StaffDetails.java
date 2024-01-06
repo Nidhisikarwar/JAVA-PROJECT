@@ -59,7 +59,8 @@ public class StaffDetails extends JFrame implements ActionListener{
 	searchEmp.setForeground(Color.WHITE);
 	searchEmp.addActionListener(this);
 	searchEmp.setFocusPainted(false);
-	add(searchEmp);
+	searchEmp.setBorder(BorderFactory.createEmptyBorder());
+        add(searchEmp);
 
         update = new JButton("Update");
 	update.setBounds(250, 150, 100, 30);
@@ -68,7 +69,8 @@ public class StaffDetails extends JFrame implements ActionListener{
 	update.setForeground(Color.WHITE);
 	update.addActionListener(this);
 	update.setFocusPainted(false);
-	add(update);
+	update.setBorder(BorderFactory.createEmptyBorder());
+        add(update);
         
 	back = new JButton("Back");
 	back.setBounds(420, 150, 100, 30);
@@ -77,6 +79,7 @@ public class StaffDetails extends JFrame implements ActionListener{
 	back.setForeground(Color.WHITE);
 	back.addActionListener(this);
 	back.setFocusPainted(false);
+        back.setBorder(BorderFactory.createEmptyBorder());
 	add(back);
 	
 	try{
@@ -98,9 +101,8 @@ public class StaffDetails extends JFrame implements ActionListener{
 		e.printStackTrace();
 	}
 	
-	
 	JScrollPane jsp = new JScrollPane(sTable);
-	jsp.setBounds(20, 220, 1350, 200);
+	jsp.setBounds(20, 220, 1350, 350);
         
         columnModel = sTable.getColumnModel();
         columnModel.getColumn(0).setPreferredWidth(80);

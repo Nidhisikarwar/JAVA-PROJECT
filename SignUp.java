@@ -164,6 +164,7 @@ public class SignUp extends JFrame implements ActionListener{
                 String password= new String(tfpassword.getPassword());
                 String semail = tfemail.getText();
                 String username = tfusername.getText();
+                String none = "- -";
                 // String studentDob=((JTextField) dateChooser.getDateEditor().getUIComponent()).getText();
 
                 if(firstName.length() < 3 || lastName.length() < 3){
@@ -181,7 +182,7 @@ public class SignUp extends JFrame implements ActionListener{
                 else{
                         try{
                                         Conn c = new Conn();
-                                        String query = "insert into studentdetails values('"+firstName+"', '"+lastName+"', '"+sphone+"' , '"+semail+"' , '"+username+"')";
+                                        String query = "insert into studentdetails values('"+firstName+"', '"+lastName+"', '"+sphone+"' , '"+semail+"' , '"+username+"', '"+none+"', '"+none+"', '"+none+"', '"+none+"', '"+none+"', '"+none+"')";
                                         String query2 = "insert into login values('"+username+"' ,'"+password+"')";
                                         c.s.executeUpdate(query);
                                         c.s.executeUpdate(query2);

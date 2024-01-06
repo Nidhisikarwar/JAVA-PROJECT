@@ -62,6 +62,7 @@ public class ViewBooks extends JFrame implements ActionListener{
 	search.setForeground(Color.WHITE);
 	search.addActionListener(this);
 	search.setFocusPainted(false);
+        search.setBorder(BorderFactory.createEmptyBorder());
 	add(search);
 	
 	back = new JButton("Back");
@@ -71,6 +72,7 @@ public class ViewBooks extends JFrame implements ActionListener{
 	back.setForeground(Color.WHITE);
 	back.addActionListener(this);
 	back.setFocusPainted(false);
+        back.setBorder(BorderFactory.createEmptyBorder());
 	add(back);
 	
 	try{
@@ -93,7 +95,7 @@ public class ViewBooks extends JFrame implements ActionListener{
 	}
         
 	JScrollPane jsp = new JScrollPane(table);
-	jsp.setBounds(20, 220, 1350, 250);
+	jsp.setBounds(20, 220, 1350, 400);
        
         columnModel = table.getColumnModel();
         columnModel.getColumn(0).setPreferredWidth(220);

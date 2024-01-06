@@ -15,12 +15,12 @@ import java.awt.geom.*;
 import class_files.*;
 
 public class Dashboard extends JFrame implements ActionListener{
-    	JButton btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8;
+    	JButton btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, logout;
 	ImageIcon backImg;
-	ImageIcon imgBtn2, imgBtn1, imgBtn3, imgBtn4, imgBtn5, imgBtn6, imgBtn7, imgBtn8;
+	ImageIcon imgBtn2, imgBtn1, imgBtn3, imgBtn4, imgBtn5, imgBtn6, imgBtn7, imgBtn8, imgLog;
 	Image backImg2;
-	JLabel backLbl;
-	
+	JLabel backLbl, user;
+
 	Dashboard() {
         setLocation(180, 10);
         setSize(1250, 800);
@@ -39,6 +39,26 @@ public class Dashboard extends JFrame implements ActionListener{
 
         Font fontBtn = new Font("Monospaced", Font.BOLD, 20);
 
+        /*
+        imgLog = new ImageIcon(ClassLoader.getSystemResource("images/viewinfo.png"));
+        Image imgLogTemp = imgLog.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+        user = new JLabel(new ImageIcon(imgLogTemp));
+        user.setBounds(915, 20, 40, 40);
+        user.setToolTipText("@" + username);
+        add(user);
+*/
+                
+        logout = new JButton();
+        logout.setText("Logout");
+        logout.setBounds(1130, 20, 100, 30);
+        logout.setToolTipText("Log out of account");
+        logout.setFocusPainted(false);
+        logout.setFont(new Font("Monospaced", Font.BOLD, 16));
+        logout.setBorder(BorderFactory.createLineBorder(new Color(77, 173, 254), 2, true));
+        logout.setBackground(getContentPane().getBackground());
+        logout.setForeground(new Color(26, 198, 181));
+        logout.addActionListener(this);
+                
         imgBtn1 = new ImageIcon(ClassLoader.getSystemResource("images/book.png"));
         Image imgBtn1Temp = imgBtn1.getImage().getScaledInstance(50, 45, Image.SCALE_REPLICATE);
         btn1 = new JButton(new ImageIcon(imgBtn1Temp) );
@@ -144,6 +164,7 @@ public class Dashboard extends JFrame implements ActionListener{
         add(btn6);
         add(btn7);
         add(btn8);
+        add(logout);
 
 	backImg = new ImageIcon(ClassLoader.getSystemResource("images/first.png"));
         backImg2 = backImg.getImage().getScaledInstance(800, 180, Image.SCALE_SMOOTH);
@@ -199,12 +220,16 @@ public class Dashboard extends JFrame implements ActionListener{
             setVisible(false);
             new UserDetails();
         }
-        else{
+        else if(ae.getSource() == btn8){
             setVisible(false);
             new IssuedBooks();
         }
+        else{
+            setVisible(false);
+            new Section();
+        }
     }
     public static void main(String[] args) {
-	    new Splash();
+	    new Dashboard();
     }
 }

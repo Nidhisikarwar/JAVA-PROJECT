@@ -48,85 +48,85 @@ public class AddBook extends JFrame implements ActionListener{
         JLabel labelname=new JLabel("Name of the book :");
         labelname.setBounds(50,140,170,50);
         labelname.setFont(font);
-        labelname.setForeground(new Color(40, 94, 157));
+        labelname.setForeground(new Color(77, 77, 77));
         add(labelname);
 
         tfname = new JTextField();
         tfname.setBounds(230,150,180,30);
         tfname.setFont(tfFont);
-        tfname.setBorder(BorderFactory.createLineBorder(new Color(40, 94, 157), 2, true));
+        tfname.setBorder(BorderFactory.createLineBorder(new Color(77, 77, 77), 2, true));
         add(tfname);
 
         JLabel labelauthor=new JLabel("Author name :");
         labelauthor.setBounds(50,190,170,50);
         labelauthor.setFont(font);
-        labelauthor.setForeground(new Color(40, 94, 157));
+        labelauthor.setForeground(new Color(77, 77, 77));
         add(labelauthor);
 
         tfauthor=new JTextField();
         tfauthor.setBounds(230,204,180,30);
         tfauthor.setFont(tfFont);
-        tfauthor.setBorder(BorderFactory.createLineBorder(new Color(40, 94, 157), 2, true));
+        tfauthor.setBorder(BorderFactory.createLineBorder(new Color(77, 77, 77), 2, true));
         add(tfauthor);
 
         JLabel labelpage=new JLabel("No. of pages :");
         labelpage.setBounds(50,240,170,60);
         labelpage.setFont(font);
-        labelpage.setForeground(new Color(40, 94, 157));
+        labelpage.setForeground(new Color(77, 77, 77));
         add(labelpage);
 
         tfpage =new JTextField();
         tfpage.setBounds(230,255,180,30);
         tfpage.setFont(tfFont);
-        tfpage.setBorder(BorderFactory.createLineBorder(new Color(40, 94, 157), 2, true));
+        tfpage.setBorder(BorderFactory.createLineBorder(new Color(77, 77, 77), 2, true));
         add(tfpage);
 
         JLabel labelpublisher=new JLabel("Publisher name :");
         labelpublisher.setBounds(50,290,170,60);
         labelpublisher.setFont(font);
-        labelpublisher.setForeground(new Color(40, 94, 157));
+        labelpublisher.setForeground(new Color(77, 77, 77));
         add(labelpublisher);
 
         tfpublisher=new JTextField();
         tfpublisher.setBounds(230,305,180,30);
         tfpublisher.setFont(tfFont);
-        tfpublisher.setBorder(BorderFactory.createLineBorder(new Color(40, 94, 157), 2, true));
+        tfpublisher.setBorder(BorderFactory.createLineBorder(new Color(77, 77, 77), 2, true));
         add(tfpublisher);
 
         JLabel labelprice=new JLabel("Price :");
         labelprice.setBounds(50,340,170,60);
         labelprice.setFont(font);
-        labelprice.setForeground(new Color(40, 94, 157));
+        labelprice.setForeground(new Color(77, 77, 77));
         add(labelprice);
 
         tfprice=new JTextField();
         tfprice.setBounds(230,355,180,30);
         tfprice.setFont(tfFont);
-        tfprice.setBorder(BorderFactory.createLineBorder(new Color(40, 94, 157), 2, true));
+        tfprice.setBorder(BorderFactory.createLineBorder(new Color(77, 77, 77), 2, true));
         add(tfprice);
 
         JLabel labeledition=new JLabel("Edition :");
         labeledition.setBounds(50,390,170,50);
         labeledition.setFont(font);
-        labeledition.setForeground(new Color(40, 94, 157));
+        labeledition.setForeground(new Color(77, 77, 77));
         add(labeledition);
 
         tfedition=new JTextField();
         tfedition.setBounds(230,403,180,30);
-        tfedition.setBorder(BorderFactory.createLineBorder(new Color(40, 94, 157), 2, true));
+        tfedition.setBorder(BorderFactory.createLineBorder(new Color(77, 77, 77), 2, true));
         tfedition.setFont(tfFont);
         add(tfedition);
 
         JLabel labelbookid=new JLabel("Book Id :");
         labelbookid.setBounds(50,440,170,50);
         labelbookid.setFont(font);
-        labelbookid.setForeground(new Color(40, 94, 157));
+        labelbookid.setForeground(new Color(77, 77, 77));
         add(labelbookid);
 
         labelid = new JLabel(""+ number);
         labelid.setBounds(230,444,170,50);
         labelid.setFont(font);
-        labelid.setForeground(new Color(40, 94, 157));
+        labelid.setForeground(new Color(77, 77, 77));
         add(labelid);
         
         add=new JButton("Add Book Details");

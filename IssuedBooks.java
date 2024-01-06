@@ -85,7 +85,7 @@ public class IssuedBooks extends JFrame implements ActionListener{
 	}
         
 	JScrollPane jsp = new JScrollPane(iTable);
-	jsp.setBounds(20, 250, 1350, 250);
+	jsp.setBounds(20, 250, 1350, 350);
        
         columnModel = iTable.getColumnModel();
         columnModel.getColumn(0).setPreferredWidth(40);
@@ -95,6 +95,7 @@ public class IssuedBooks extends JFrame implements ActionListener{
         columnModel.getColumn(4).setPreferredWidth(50);
         columnModel.getColumn(5).setPreferredWidth(60);
         columnModel.getColumn(6).setPreferredWidth(100);
+        columnModel.getColumn(7).setPreferredWidth(60);
          
 	iTable.setBackground(getContentPane().getBackground());
         iTable.getTableHeader().setBackground(getContentPane().getBackground());
@@ -118,18 +119,19 @@ public class IssuedBooks extends JFrame implements ActionListener{
  
         public void actionPerformed(ActionEvent ae){
 		if(ae.getSource() == search){
-			String query = "select * from issuedbooks where bookName = '"+chooseBook.getSelectedItem()+"''";
+			String query2 = "select * from issuedbooks where bookName = '"+chooseBook.getSelectedItem()+"' ";
 			try{
 				Conn c =new Conn();
-				ResultSet rs = c.s.executeQuery(query);
+				ResultSet rs = c.s.executeQuery(query2);
 				iTable.setModel(DbUtils.resultSetToTableModel(rs));
-                                columnModel.getColumn(0).setPreferredWidth(220);
-                                columnModel.getColumn(1).setPreferredWidth(140);
-                                columnModel.getColumn(2).setPreferredWidth(40);
-                                columnModel.getColumn(3).setPreferredWidth(130);
-                                columnModel.getColumn(4).setPreferredWidth(60);
-                                columnModel.getColumn(5).setPreferredWidth(100);
-                                columnModel.getColumn(6).setPreferredWidth(70);
+                                columnModel.getColumn(0).setPreferredWidth(40);
+                                columnModel.getColumn(1).setPreferredWidth(200);
+                                columnModel.getColumn(2).setPreferredWidth(120);
+                                columnModel.getColumn(3).setPreferredWidth(100);
+                                columnModel.getColumn(4).setPreferredWidth(50);
+                                columnModel.getColumn(5).setPreferredWidth(60);
+                                columnModel.getColumn(6).setPreferredWidth(100);
+                                columnModel.getColumn(7).setPreferredWidth(60);
 			}catch(Exception e){
 				e.printStackTrace();
 			}

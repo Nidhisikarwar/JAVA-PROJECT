@@ -75,8 +75,8 @@ public class Splash extends JFrame{
         
             try{
                 for(int i=1; i<=35; i++){
-                        Thread.sleep(70);
-	                row1.setBounds(50, 20,i*10, 180);
+                        Thread.sleep(55);
+	                row1.setBounds(50, 20, i*10, 180);
 	                row2.setBounds(50, 210, i*10, 180);
 	                row3.setBounds(50, 410, i*10, 180);
 	                row4.setBounds(50, 600, i*10, 180);
